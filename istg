@@ -1,0 +1,417 @@
+--// you are permitted to skid off this i give u permission Also made by kremmz enjoy skidding kids:)
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/dddddddddddddddfg/dfdf/main/Cf3fskko3jfndndjsdksds"))()
+local window = library:CreateWindow("Best Deepwoken Gaming Chair https://discord.gg/JVwxTYSRqC", Vector2.new(492, 598), Enum.KeyCode.RightShift)
+--// Wm
+local watermark = library:CreateWatermark("BDGC | {fps} | {game}")
+local tab = window:CreateTab("Main")
+local sector2 = tab:CreateSector("Stuff")
+local toggle = sector2:AddToggle("Anti Mod", false, function() end)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/slimethefemboy/scripts/main/Deepwoken/modslist'))()
+local plrs = game:GetService('Players')
+local lp = plrs.LocalPlayer
+
+-- kick function
+local kick = function(reason)
+    return lp:kick(reason)
+end
+
+-- check if mod is currently in game
+for i,v in pairs(plrs:GetChildren()) do 
+    if table.find(mods,v.UserId) then 
+        kick('potential mod found')
+    end
+end
+
+-- kick if mod joins game
+plrs.PlayerAdded:Connect(function(r)
+    if table.find(mods,r.UserId) then 
+        kick('potential mod joined')
+    end
+end)
+local sector = tab:CreateSector("Farms (More Soon)")
+local toggle = sector:AddToggle("intelligence Farm", true, function() end)
+local function get_math_answer(text)
+    -- parse the first number, operation and second number out of the text
+    -- this could be more specific [What is (%-?%d*%.?%d+) (%a+) ?%a* (%-?%d*%.?%d+)] but since the format is always the same i simplified it
+    
+    local first_number, operation, second_number = text:match("What is(%L+)(%l+) %l*(.+)");
+
+    -- if for some reason it failed to parse return false
+
+    if not operation then 
+        return false;
+    end;
+
+    -- return the solved equation based on the data 
+    
+    if operation == "plus" then 
+        return first_number + second_number;
+    elseif operation == "minus" then 
+        return first_number - second_number;
+    elseif operation == "times" then 
+        return first_number * second_number;
+    elseif operation == "divided" then 
+        return first_number / second_number;
+    end;
+end;
+
+-- when a gui is added to playergui check if it is a prompt 
+
+game:GetService("Players").LocalPlayer.PlayerGui.ChildAdded:Connect(function(child)
+    if child.Name == "ChoicePrompt" then 
+        -- get the answer from the gui text 
+        
+        local choice_frame = child:WaitForChild("ChoiceFrame");
+        local answer = get_math_answer(choice_frame:WaitForChild("DescSheet"):WaitForChild("Desc").Text);
+
+        -- if the answer has successfully been fetched get the correct answer button 
+        
+        if answer then 
+            local answer_button = choice_frame:WaitForChild("Options"):FindFirstChild(tostring(answer));
+            
+            if answer_button then
+                -- press the correct answer button after a randomized delay 
+                
+                wait(math.random(3, 5));
+                
+                for index, connection in next, getconnections(answer_button.MouseButton1Click) do 
+                    connection:Fire();
+                end;
+            end;
+        end;
+    end;
+end);
+
+
+
+--// Watermark shit 
+
+local button = sector2:AddButton("Chat logs", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/Y8yW6Nas"))()
+    end)
+
+
+
+
+local button = sector2:AddButton("Server Hop", function() 
+-- execute when u want to serverhop
+
+ local Players = game:GetService("Players")
+ local TeleportService = game:GetService("TeleportService")
+  
+ local placeId = 4111023553 -- 
+ 
+ TeleportService:Teleport(placeId)
+
+
+
+-- place me in autoexe
+
+repeat wait() until game:IsLoaded()
+
+if game.PlaceId ~= 4111023553 then return end
+
+local args = {
+    [1] = "A",
+    [2] = {
+        ["PrivateTest"] = false
+    }
+}
+
+game:GetService("ReplicatedStorage").Requests.StartMenu.Start:FireServer(unpack(args))
+end)
+
+
+
+
+local toggle2 = sector2:AddToggle("No fall damage", false, function() end)
+local temp
+temp = hookfunction(Instance.new'RemoteEvent'.FireServer, newcclosure(function(remote, ...)
+    if not checkcaller() then
+        local arguments = {...}
+        if arguments[1] and typeof(arguments[1]) == "number" and arguments[1] < 100 then return end
+    end
+ 
+    return temp(remote, ...)
+end))
+
+local Comabattab = window:CreateTab("Combat")
+local sector2 = tab:CreateSector("Walkspeed")
+local button = sector2:AddButton("Normal Walkspeed (maybe risky?)", function() 
+    getgenv().WalkSpeedValue = 24; --set your desired walkspeed here
+    local Player = game:service'Players'.LocalPlayer;
+    Player.Character.Humanoid:GetPropertyChangedSignal'WalkSpeed':Connect(function()
+    Player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue;
+    end)
+    Player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue;
+    end)
+
+local button = sector2:AddButton("Medium walkspeed (maybe risky?)", function() 
+        getgenv().WalkSpeedValue = 50; --set your desired walkspeed here
+    local Player = game:service'Players'.LocalPlayer;
+    Player.Character.Humanoid:GetPropertyChangedSignal'WalkSpeed':Connect(function()
+    Player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue;
+    end)
+    Player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue;
+    end)
+        
+    local button = sector2:AddButton("Fast walkspeed (risky)", function() 
+        getgenv().WalkSpeedValue = 100; --set your desired walkspeed here
+        local Player = game:service'Players'.LocalPlayer;
+        Player.Character.Humanoid:GetPropertyChangedSignal'WalkSpeed':Connect(function()
+        Player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue;
+        end)
+        Player.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue;
+        end)
+
+
+
+
+
+
+local VisualsTab = window:CreateTab("Visuals")
+local EspSection = VisualsTab:CreateSector("ESP", "left")
+local EspOtherSection = VisualsTab:CreateSector("Other Type", "right")
+local ESP = loadstring(game:HttpGet("https://pastebin.com/raw/L85CYGb8"))()
+local EnableEspToggle = EspSection:AddToggle("Enable", false, function(bool)
+    ESP.Enabled = bool
+end)
+local BoxesToggle = EspSection:AddToggle("Boxes", false, function(bool)
+    ESP.Boxes = bool
+end)
+local NamesToggle = EspSection:AddToggle("Names", false, function(bool)
+    ESP.Names = bool
+end)
+local TracersToggle = EspSection:AddToggle("Tracers", false, function(bool)
+    ESP.Tracers = bool
+end)
+local Espbutton = EspOtherSection:AddButton("Unnamed Esp", function() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua"))()
+end)
+
+local Espbutton = EspOtherSection:AddButton("Ingredient ESP", function() 
+    for i,v in pairs(game:GetService("Workspace").Ingredients:GetChildren()) do 
+    if v:IsA("MeshPart") then 
+  
+    local BillboardGui = Instance.new("BillboardGui",v)
+
+
+        local Frame = Instance.new("Frame")
+        local TextLabel = Instance.new("TextLabel")
+
+        --Properties:
+
+
+        BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        BillboardGui.Active = true
+        BillboardGui.LightInfluence = 1.000
+        BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+        BillboardGui.StudsOffset = Vector3.new(0, 3, 0)
+        BillboardGui.AlwaysOnTop = true
+        Frame.Parent = BillboardGui
+        Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Frame.BackgroundTransparency = 10.000
+        Frame.Size = UDim2.new(0, 200, 0, 200)
+
+        TextLabel.Parent = Frame
+        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel.BackgroundTransparency = 1.000
+        TextLabel.Size = UDim2.new(0,1,0,1)
+        TextLabel.Font = Enum.Font.SourceSans
+        TextLabel.Text = v.Name
+        TextLabel.TextColor3 = Color3.fromRGB(249, 214, 46)
+        TextLabel.TextSize = 20.000
+        TextLabel.TextStrokeColor3 = Color3.fromRGB(255, 42, 0)
+
+    local function delete() 
+        
+        v.BillboardGui:Destroy()
+        
+        end 
+        
+        end end 
+end)
+
+
+
+local Espbutton = EspOtherSection:AddButton("Well esp", function() 
+    for i,v in pairs(game:GetService("Workspace").Map:GetChildren()) do if v and v.Name == "Well" then 
+    
+    if v:FindFirstChild("Meshes/bucketprop2") then
+        
+        
+        local BillboardGui = Instance.new("BillboardGui",v:FindFirstChild("Meshes/bucketprop2"))
+
+
+        local Frame = Instance.new("Frame")
+        local TextLabel = Instance.new("TextLabel")
+
+        --Properties:
+
+
+        BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        BillboardGui.Active = true
+        BillboardGui.LightInfluence = 1.000
+        BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+        BillboardGui.StudsOffset = Vector3.new(0, 3, 0)
+        BillboardGui.AlwaysOnTop = true
+        Frame.Parent = BillboardGui
+        Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Frame.BackgroundTransparency = 10.000
+        Frame.Size = UDim2.new(0, 200, 0, 200)
+
+        TextLabel.Parent = Frame
+        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel.BackgroundTransparency = 1.000
+        TextLabel.Size = UDim2.new(0,50,0,50)
+        TextLabel.Font = Enum.Font.SourceSans
+        TextLabel.Text = v.Name
+        TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel.TextSize = 30.000
+        TextLabel.TextStrokeColor3 = Color3.fromRGB(255, 42, 0)
+
+    end end end 
+end)
+
+
+local Espbutton = EspOtherSection:AddButton("Shop esp", function() 
+    local Part = Instance.new("Part",game.Workspace)
+      local BillboardGui = Instance.new("BillboardGui")
+
+
+        local Frame = Instance.new("Frame")
+        local TextLabel = Instance.new("TextLabel")
+Part.CFrame = CFrame.new(2829.7124, 403.937378, -5771.65576, 0.992842376, -7.86576422e-08, 0.119431823, 8.35114022e-08, 1, -3.56355585e-08, -0.119431823, 4.53544153e-08, 0.992842376)
+Part.Name = "Weaponary"
+Part.Anchored = true
+Part.Transparency = 1 
+Part.CanCollide = false 
+
+
+        --Properties:
+
+
+        BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        BillboardGui.Active = true
+        BillboardGui.LightInfluence = 1.000
+        BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+        BillboardGui.StudsOffset = Vector3.new(0, 3, 0)
+        BillboardGui.AlwaysOnTop = true
+        BillboardGui.Parent = Part 
+        Frame.Parent = BillboardGui
+        Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Frame.BackgroundTransparency = 10.000
+        Frame.Size = UDim2.new(0, 200, 0, 200)
+
+        TextLabel.Parent = Frame
+        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel.BackgroundTransparency = 1.000
+        TextLabel.Size = UDim2.new(0, 100, 0, 50)
+        TextLabel.Font = Enum.Font.SourceSans
+        TextLabel.Text = "Weaponary"
+        TextLabel.TextColor3 = Color3.fromRGB(0,0,0)
+        TextLabel.TextSize = 40.000
+        TextLabel.TextStrokeColor3 = Color3.fromRGB(255, 42, 0)
+        
+        local Part = Instance.new("Part",game.Workspace)
+      local BillboardGui = Instance.new("BillboardGui")
+
+
+        local Frame = Instance.new("Frame")
+        local TextLabel = Instance.new("TextLabel")
+Part.CFrame = CFrame.new(2533.7478, 413.425262, -5565.68848, -0.941595435, 8.98090633e-08, 0.336746156, 6.12679827e-08, 1, -9.53816581e-08, -0.336746156, -6.91791797e-08, -0.941595435)
+Part.Name = "Book Shop"
+Part.Anchored = true
+Part.Transparency = 1 
+Part.CanCollide = false 
+
+
+        --Properties:
+
+
+        BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        BillboardGui.Active = true
+        BillboardGui.LightInfluence = 1.000
+        BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+        BillboardGui.StudsOffset = Vector3.new(0, 3, 0)
+        BillboardGui.AlwaysOnTop = true
+        BillboardGui.Parent = Part 
+        Frame.Parent = BillboardGui
+        Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Frame.BackgroundTransparency = 10.000
+        Frame.Size = UDim2.new(0, 200, 0, 200)
+
+        TextLabel.Parent = Frame
+        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel.BackgroundTransparency = 1.000
+        TextLabel.Size = UDim2.new(0, 100, 0, 50)
+        TextLabel.Font = Enum.Font.SourceSans
+        TextLabel.Text = "Book Shop"
+        TextLabel.TextColor3 = Color3.fromRGB(0,0,0)
+        TextLabel.TextSize = 40.000
+        TextLabel.TextStrokeColor3 = Color3.fromRGB(255, 42, 0)
+        
+        local Part = Instance.new("Part",game.Workspace)
+      local BillboardGui = Instance.new("BillboardGui")
+
+
+        local Frame = Instance.new("Frame")
+        local TextLabel = Instance.new("TextLabel")
+Part.CFrame = CFrame.new(2674.77319, 407.672272, -5782.31934, 0.638172209, 1.47472461e-08, 0.769893646, -3.78707945e-08, 1, 1.22365513e-08, -0.769893646, -3.69655098e-08, 0.638172209)
+Part.Name = "Magic Shop"
+Part.Anchored = true
+Part.Transparency = 1 
+Part.CanCollide = true
+
+
+        --Properties:
+
+
+        BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        BillboardGui.Active = true
+        BillboardGui.LightInfluence = 1.000
+        BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+        BillboardGui.StudsOffset = Vector3.new(0, 3, 0)
+        BillboardGui.AlwaysOnTop = true
+        BillboardGui.Parent = Part 
+        Frame.Parent = BillboardGui
+        Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Frame.BackgroundTransparency = 10.000
+        Frame.Size = UDim2.new(0, 200, 0, 200)
+
+        TextLabel.Parent = Frame
+        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel.BackgroundTransparency = 1.000
+        TextLabel.Size = UDim2.new(0, 100, 0, 50)
+        TextLabel.Font = Enum.Font.SourceSans
+        TextLabel.Text = "Magic Shop"
+        TextLabel.TextColor3 = Color3.fromRGB(0,0,0)
+        TextLabel.TextSize = 40.000
+        TextLabel.TextStrokeColor3 = Color3.fromRGB(255, 42, 0)
+
+        
+    
+  
+end)
+
+
+EnableEspToggle:AddColorpicker(Color3.new(), function(color) 
+    ESP.Color = color
+end)
+
+
+
+local SettingsTab = window:CreateTab("Settings")
+local WatermarkSection = SettingsTab:CreateSector("Watermark", "right")
+local Watermarktoggle = WatermarkSection:AddToggle("Visible)", false, function(bool)
+    watermark.Visible = bool
+end)
+
+local CreditsTab = window:CreateTab("Credits")
+local CreditsSection = CreditsTab:CreateSector("Credits", "left")
+CreditsSection:AddLabel("Developers: Kremmz")
+
+
+
+local ScreenGui = Instance.new('ScreenGui');
+(protectgui or syn.protect_gui or (function() end))(ScreenGui);
